@@ -58,7 +58,7 @@ class Vector {
     return product.product;
   }
 
-  delete(code) {
+  deleteById(code) {
     if (code < 0 || code > this.t) {
       return false;
     }
@@ -77,6 +77,40 @@ class Vector {
     this.t--;
     return aux.product;
   }
+
+  deleteInicio(){
+    if(this.inicio == null){
+        return false
+    }else{
+        let productoX = this.inicio.product
+        if(this.t == 1){
+            this.inicio = null
+            this.final = null
+        }else{
+            this.inicio = this.inicio.siguiente
+            this.inicio.anterior = null
+        }
+        this.t--
+        return productoX
+    }
+}
+
+deleteFinal(){
+    if(this.final == null){
+        return false
+    }else{
+        let productoX = this.final.product
+        if(this.t == 1){
+            this.inicio = null
+            this.final = null
+        }else{
+            this.final = this.final.anterior
+            this.final.siguiente = null
+        }
+        this.t--
+        return productoX
+    }
+}
 
   search(code) {
     if (code < 0 || code >= this.t) {
