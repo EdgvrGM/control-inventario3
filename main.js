@@ -26,6 +26,7 @@ class Producto {
     this.cantidad = cantidad;
     this.costo = costo;
     this.siguiente = null;
+    this.anterior = null;
   }
   calcularPrecio() {
     let productos = this.cantidad;
@@ -41,17 +42,17 @@ class Vector {
     this.capacidad = 20;
     this.t = 0;
     this.inicio = null;
+    this.final = null;
   }
 
   addNew(product) {
-    if (this.inicio == null) {
+    if (this.final == null) {
       this.inicio = product;
+      this.final = product;
     } else {
-      let aux = this.inicio;
-      while (aux.siguiente !== null) {
-        aux = aux.siguiente;
-      }
-      aux.siguiente = product;
+      product.anterior = this.final;
+      this.final.siguiente = product;
+      this.final = product;
     }
     this.t++;
     return product.product;
@@ -115,13 +116,14 @@ class Vector {
     this.arr.reverse();
   }
   addNew2(product, pos) {
-    if (pos < 0 || this.capacidad.length >= this.t) {
+    if (pos < 0 || pos > this.t) {
       return false;
     } else {
       let aux = this.inicio;
       let anterior;
       if (pos == 0) {
         product.siguiente = aux;
+        aux.anterior = product;
         this.inicio = product;
       } else {
         for (let i = 0; i < pos; i++) {
@@ -129,11 +131,13 @@ class Vector {
           aux = aux.siguiente;
         }
         product.siguiente = aux;
+        product.anterior = anterior;
         anterior.siguiente = product;
+        aux.anterior = product;
       }
-      this.tamano++;
+      this.t++;
     }
-    return producto.producto;
+    return product.product;
   }
 }
 
