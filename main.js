@@ -78,39 +78,39 @@ class Vector {
     return aux.product;
   }
 
-  deleteInicio(){
-    if(this.inicio == null){
-        return false
-    }else{
-        let productoX = this.inicio.product
-        if(this.t == 1){
-            this.inicio = null
-            this.final = null
-        }else{
-            this.inicio = this.inicio.siguiente
-            this.inicio.anterior = null
-        }
-        this.t--
-        return productoX
+  deleteInicio() {
+    if (this.inicio == null) {
+      return false;
+    } else {
+      let productoX = this.inicio.product;
+      if (this.t == 1) {
+        this.inicio = null;
+        this.final = null;
+      } else {
+        this.inicio = this.inicio.siguiente;
+        this.inicio.anterior = null;
+      }
+      this.t--;
+      return productoX;
     }
-}
+  }
 
-deleteFinal(){
-    if(this.final == null){
-        return false
-    }else{
-        let productoX = this.final.product
-        if(this.t == 1){
-            this.inicio = null
-            this.final = null
-        }else{
-            this.final = this.final.anterior
-            this.final.siguiente = null
-        }
-        this.t--
-        return productoX
+  deleteFinal() {
+    if (this.final == null) {
+      return false;
+    } else {
+      let productoX = this.final.product;
+      if (this.t == 1) {
+        this.inicio = null;
+        this.final = null;
+      } else {
+        this.final = this.final.anterior;
+        this.final.siguiente = null;
+      }
+      this.t--;
+      return productoX;
     }
-}
+  }
 
   search(code) {
     if (code < 0 || code >= this.t) {
@@ -133,7 +133,7 @@ deleteFinal(){
     let aux = this.inicio;
     let list = "";
     while (aux) {
-      lista += aux.product += " - ";
+      list += aux.product += " - ";
       aux = aux.siguiente;
     }
     list += "Proceso finalizado";
@@ -141,14 +141,16 @@ deleteFinal(){
   }
 
   getInvList() {
-    let i = 0;
-    this.arr.reverse();
-    while (i <= this.arr.length) {
-      li2.innerHTML += `${this.arr[i].nombre} <br/>`;
-      i++;
+    let aux = this.final;
+    let list = "";
+    while (aux) {
+      list += `${aux.product}, `;
+      aux = aux.anterior;
     }
-    this.arr.reverse();
+    list += "Proceso finalizado";
+    return list;
   }
+
   addNew2(product, pos) {
     if (pos < 0 || pos > this.t) {
       return false;
