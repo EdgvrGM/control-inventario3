@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventario</title>
+  </head>
+  <body>
+    <div>
+      <h1>Control de Inventario</h1>
+    </div>
+    <div>
+      <h3>Ingresa los datos de un producto (maximo 20 productos)</h3>
+      <input type="text" id="nombre" placeholder="Nombre" />
+      <input type="number" id="codigo" placeholder="Codigo" />
+      <input type="text" id="descripcion" placeholder="Descripcion" />
+      <input type="number" id="cantidad" placeholder="Cantidad" />
+      <input type="number" id="costo" placeholder="Costo" />
+      <button id="addNew">Agregar nuevo producto</button>
+    </div>
+    <div>
+      <h3>
+        Elige la posicion de la lista en que se guardara el producto (1-20)
+        (Opcional)
+      </h3>
+      <input type="number" id="posicion" placeholder="Posicion" />
+    </div>
+    <div>
+      <h3>Borrar un producto por codigo</h3>
+      <input type="text" id="deleteCode" placeholder="Codigo" />
+      <button id="deleteBtn">Borrar</button>
+    </div>
+    <div>
+      <h3>Buscar un producto por codigo</h3>
+      <input type="number" id="searchCode" placeholder="Codigo" />
+      <button id="searchBtn">Buscar</button>
+    </div>
+    <div>
+      <h3>Recuperar todos los productos</h3>
+      <button id="recuperar">Recuperar</button>
+      <div>
+        <p id="listar"></p>
+      </div>
+    </div>
+    <div>
+      <h3>Recuperar todos los productos en orden inverso</h3>
+      <button id="recuperarInv">Recuperar</button>
+      <div>
+        <p id="listar2"></p>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
